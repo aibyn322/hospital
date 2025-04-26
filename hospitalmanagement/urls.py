@@ -12,7 +12,7 @@ Youtube :youtube.com/lazycoders
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from hospital import views
 from django.contrib.auth.views import LoginView,LogoutView
 
@@ -21,7 +21,7 @@ from django.contrib.auth.views import LoginView,LogoutView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home_view,name=''),
-
+    path('', include('home_view')),
 
     path('aboutus', views.aboutus_view),
     path('contactus', views.contactus_view),
@@ -113,6 +113,9 @@ urlpatterns +=[
 
 urlpatterns +=[
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 #Developed By : sumit kumar
 #facebook : fb.com/sumit.luv
