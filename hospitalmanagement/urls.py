@@ -21,7 +21,7 @@ from django.contrib.auth.views import LoginView,LogoutView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home_view,name=''),
-    path('', include('homebase')),
+    path('', include('hospitalmanagement/urls.py')),
 
     path('aboutus', views.aboutus_view),
     path('contactus', views.contactus_view),
