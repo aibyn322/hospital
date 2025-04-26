@@ -9,7 +9,8 @@ Youtube :youtube.com/lazycoders
 
 
 
-
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from hospital import views
@@ -108,6 +109,10 @@ urlpatterns +=[
     path('patient-discharge', views.patient_discharge_view,name='patient-discharge'),
 
 ]
+
+
+urlpatterns = [
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 #Developed By : sumit kumar
 #facebook : fb.com/sumit.luv
