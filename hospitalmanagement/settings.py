@@ -80,9 +80,13 @@ WSGI_APPLICATION = 'hospitalmanagement.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         default='postgresql://hospitaldatabase_9i2i_user:RJNFPC3ClH3OZDxiTsmtOomKEGvsBzPz@dpg-d070ij9r0fns7382pf10-a.oregon-postgres.render.com/hospitaldatabase_9i2i',
-        conn_max_age=600,
-        options={'options': '-c timezone=UTC'}
+        conn_max_age=600
     )
+}
+
+# Устанавливаем параметр timezone через OPTIONS
+DATABASES['default']['OPTIONS'] = {
+    'options': '-c timezone=UTC'
 }
 
 
