@@ -78,16 +78,20 @@ WSGI_APPLICATION = 'hospitalmanagement.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://hospitaldatabase_9i2i_user:RJNFPC3ClH3OZDxiTsmtOomKEGvsBzPz@dpg-d070ij9r0fns7382pf10-a.oregon-postgres.render.com/hospitaldatabase_9i2i',
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hospitaldatabase_9i2i',
+        'USER': 'hospitaldatabase_9i2i_user',
+        'PASSWORD': 'RJNFPC3ClH3OZDxiTsmtOomKEGvsBzPz',
+        'HOST': 'dpg-d070ij9r0fns7382pf10-a.oregon-postgres.render.com',
+        'PORT': '5432',
+        'OPTIONS': {
+            'options': '-c timezone=UTC'
+        },
+        'CONN_MAX_AGE': 600,
+    }
 }
 
-# Устанавливаем параметр timezone через OPTIONS
-DATABASES['default']['OPTIONS'] = {
-    'options': '-c timezone=UTC'
-}
 
 
 
